@@ -33,41 +33,42 @@ export default function UserComponent() {
 
 
 
-  if (loading) return <p>Loading...</p>;
-
-  return (
-
-<>
-<table width="100%">
-<tbody>
-  <tr>
-    <td><input value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" style={{border:'1px solid #000', padding:'10px 10px', width:'100%'}}/></td>
-    <td><input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" style={{border:'1px solid #000', padding:'10px 10px', width:'100%'}} /></td>
-    <td><input value={contact} onChange={(e) => setContact(e.target.value)} placeholder="Contact" style={{border:'1px solid #000', padding:'10px 10px', width:'100%'}} /></td>
-    <td>
-      {editId ? <><button className="update_btn"
-       onClick={() =>
-          dispatch(
-          updateUser({
-            id: editId!,
-            data: { name, email, contact },
-          })
-           )
-         }>
-        Update
-     </button></> : <><button onClick={handleAdd} className="add_btn">Add</button></>}
-    
-    
-</td>
-  </tr>
-  </tbody>
-</table>
+  if (loading)
+    { 
+      return <p>Loading...</p>
+    }else{
+    return (
+    <>
+    <table width="100%">
+    <tbody>
+      <tr>
+        <td><input value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" style={{border:'1px solid #000', padding:'10px 10px', width:'100%'}}/></td>
+        <td><input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" style={{border:'1px solid #000', padding:'10px 10px', width:'100%'}} /></td>
+        <td><input value={contact} onChange={(e) => setContact(e.target.value)} placeholder="Contact" style={{border:'1px solid #000', padding:'10px 10px', width:'100%'}} /></td>
+        <td>
+          {editId ? <><button className="update_btn"
+          onClick={() =>
+              dispatch(
+              updateUser({
+                id: editId!,
+                data: { name, email, contact },
+              })
+              )
+            }>
+            Update
+        </button></> : <><button onClick={handleAdd} className="add_btn">Add</button></>}
+        
+        
+    </td>
+      </tr>
+      </tbody>
+    </table>
 
     <table width="100%">
       <tbody>
-      {users.map((u) => (
+      {users.map((u, index) => (
         <tr key={u._id}>
-          <td></td>
+          <td>{index + 1}</td>
           <td>{u.name}</td>
           <td>{u.email}</td>
           <td>{u.contact}</td>
@@ -86,4 +87,5 @@ export default function UserComponent() {
     </table>
     </>
   );
+}
 }

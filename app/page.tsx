@@ -7,6 +7,7 @@ import { fetchProducts } from "./store/productSlice";
 import { RootState, AppDispatch } from "./store/store";
 import ProductList from "./components/productList";
 import UserComponent from "./components/userComponent";
+import Learn from "./components/learn";
 
 export default function Home() {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,21 +22,9 @@ export default function Home() {
   }, [dispatch, products.length]);
 
 
- const [show, setShow]= useState(false);
 
- const [btn, setBtn] = useState(false);
- const diaBtn=()=>{
-  setBtn(!btn);
- }
+https://jsonplaceholder.typicode.com/users
 
-const [count, setCount] = useState(0);
-
-const countHandle = ()=>{
-  setCount(count+1);
-}
-const countHandleMinus = ()=>{
-  setCount(count-1);
-}
 
 
 
@@ -47,18 +36,9 @@ const countHandleMinus = ()=>{
       <ProductList products={products} />
       <UserComponent/>
     
-      
-      <button onClick={()=>setShow(prev=>!prev)}>{show? "Hide":"Show"}</button>
-      {show && <div>this is div</div>}<br/>
+   <Learn/>
 
-
-      <button onClick={()=>diaBtn()} disabled={btn}>Click</button>
-      <br/>
-      
-
-     <button onClick={countHandle}>Increase</button> ===== {count} =====
-     <button onClick={countHandleMinus}>Decrease</button>
-
+     
 
     </div>
   );
