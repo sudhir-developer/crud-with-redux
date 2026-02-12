@@ -26,29 +26,28 @@ const usersPerPage = 3;
             setLoading(false);
         }
     }
+    useEffect(()=>{
+        fetchData();
+       },[]);
+
   const searchTerm = search.toLowerCase();
   const filteredUsers = users.filter((item) =>
     item.name.toLowerCase().includes(searchTerm) ||
     item.email.toLowerCase().includes(searchTerm)
   );
-
-     // 📄 Pagination Logic
+// 📄 Pagination Logic
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
-
   const currentUsers = filteredUsers.slice(
     indexOfFirstUser,
     indexOfLastUser
   );
-
   const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
-
-   useEffect(()=>{
-    fetchData();
-   },[]);
+// 📄 Pagination
+  
 
 
-   
+
 
 
     return(
